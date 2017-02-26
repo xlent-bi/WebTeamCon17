@@ -77,6 +77,12 @@
     <RemoteCleanCommandLine>make -C projects/LedMatrix clean</RemoteCleanCommandLine>
     <RemoteBuildOutputs>projects/LedMatrix/wg-udp-server</RemoteBuildOutputs>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <RemoteBuildCommandLine>make -C projects/LedMatrix</RemoteBuildCommandLine>
+    <RemoteReBuildCommandLine>make -C projects/LedMatrix all</RemoteReBuildCommandLine>
+    <RemoteCleanCommandLine>make -C projects/LedMatrix clean</RemoteCleanCommandLine>
+    <RemoteBuildOutputs>projects/LedMatrix/wt-udp-server</RemoteBuildOutputs>
+  </PropertyGroup>
   <ItemGroup>
     <ClInclude Include="include\canvas.h" />
     <ClInclude Include="include\gpio.h" />
@@ -129,6 +135,7 @@
     <None Include="Makefile" />
     <None Include="matrixtest.py" />
     <None Include="matrixtest2.py" />
+    <None Include="node-app\app.js" />
     <None Include="README.md" />
     <None Include="runtext.ppm" />
     <None Include="runtext16.ppm" />
