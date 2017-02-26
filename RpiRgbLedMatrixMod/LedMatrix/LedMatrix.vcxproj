@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7ec67491-6813-4e56-93c1-39af3cfc42d6}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>LedMatrix</RootNamespace>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{FC1A4D80-50E9-41DA-9192-61C0DBAA00D2}</LinuxProjectType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>Makefile</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <RemoteBuildCommandLine>make</RemoteBuildCommandLine>
+    <RemoteCleanCommandLine>make clean</RemoteCleanCommandLine>
+    <RemoteReBuildCommandLine>make all</RemoteReBuildCommandLine>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <RemoteBuildCommandLine>make -C projects/LedMatrix</RemoteBuildCommandLine>
+    <RemoteReBuildCommandLine>make -C projects/LedMatrix all</RemoteReBuildCommandLine>
+    <RemoteCleanCommandLine>make -C projects/LedMatrix clean</RemoteCleanCommandLine>
+    <RemoteBuildOutputs>projects/LedMatrix/wg-udp-server</RemoteBuildOutputs>
+  </PropertyGroup>
+  <ItemGroup>
+    <ClInclude Include="include\canvas.h" />
+    <ClInclude Include="include\gpio.h" />
+    <ClInclude Include="include\graphics.h" />
+    <ClInclude Include="include\led-matrix.h" />
+    <ClInclude Include="include\thread.h" />
+    <ClInclude Include="include\threaded-canvas-manipulator.h" />
+    <ClInclude Include="lib\framebuffer-internal.h" />
+    <ClInclude Include="lib\utf8-internal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="adafruit.png" />
+    <Image Include="cloud.gif" />
+    <Image Include="img\chained-64x64.jpg" />
+    <Image Include="img\hub75.jpg" />
+    <Image Include="img\pixelpusher-vid.jpg" />
+    <Image Include="img\running-vid.jpg" />
+    <Image Include="img\time-display.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ada-matrix.py" />
+    <None Include="COPYING" />
+    <None Include="fonts\10x20.bdf" />
+    <None Include="fonts\4x6.bdf" />
+    <None Include="fonts\5x7.bdf" />
+    <None Include="fonts\5x8.bdf" />
+    <None Include="fonts\6x10.bdf" />
+    <None Include="fonts\6x12.bdf" />
+    <None Include="fonts\6x13.bdf" />
+    <None Include="fonts\6x13B.bdf" />
+    <None Include="fonts\6x13O.bdf" />
+    <None Include="fonts\6x9.bdf" />
+    <None Include="fonts\7x13.bdf" />
+    <None Include="fonts\7x13B.bdf" />
+    <None Include="fonts\7x13O.bdf" />
+    <None Include="fonts\7x14.bdf" />
+    <None Include="fonts\7x14B.bdf" />
+    <None Include="fonts\8x13.bdf" />
+    <None Include="fonts\8x13B.bdf" />
+    <None Include="fonts\8x13O.bdf" />
+    <None Include="fonts\9x15.bdf" />
+    <None Include="fonts\9x15B.bdf" />
+    <None Include="fonts\9x18.bdf" />
+    <None Include="fonts\9x18B.bdf" />
+    <None Include="fonts\AUTHORS" />
+    <None Include="fonts\clR6x12.bdf" />
+    <None Include="fonts\helvR12.bdf" />
+    <None Include="fonts\README" />
+    <None Include="lib\Makefile" />
+    <None Include="Makefile" />
+    <None Include="matrixtest.py" />
+    <None Include="matrixtest2.py" />
+    <None Include="README.md" />
+    <None Include="runtext.ppm" />
+    <None Include="runtext16.ppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="demo-main.cc" />
+    <ClCompile Include="lib\bdf-font.cc" />
+    <ClCompile Include="lib\framebuffer.cc" />
+    <ClCompile Include="lib\gpio.cc" />
+    <ClCompile Include="lib\graphics.cc" />
+    <ClCompile Include="lib\led-matrix.cc" />
+    <ClCompile Include="wt-udp-server.cc" />
+    <ClCompile Include="lib\thread.cc" />
+    <ClCompile Include="minimal-example.cc" />
+    <ClCompile Include="rgbmatrix.cc" />
+    <ClCompile Include="text-example.cc" />
+  </ItemGroup>
+  <ItemDefinitionGroup />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
