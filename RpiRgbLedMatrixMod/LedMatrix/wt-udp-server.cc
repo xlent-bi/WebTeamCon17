@@ -59,15 +59,15 @@ void die(char *s)
 	exit(1);
 }
 
-std::vector<string> CreateArray(const char* arr) {
+std::vector<std::string> CreateArray(const char* arr) {
 
 	std::vector<std::string> result;
-	string input = string(arr);
+	std::string input = std::string(arr);
 	int len = strlen(arr);
 	int position = 0;
 
 	while (position < len) {
-		string temp = input.substr(position, 6);
+		std::string temp = input.substr(position, 6);
 		result.push_back(temp);
 		position += 7;
 	}
@@ -75,7 +75,7 @@ std::vector<string> CreateArray(const char* arr) {
 	return result;
 }
 
-void DrawPixel(Canvas *canvas, int pixelNumber, string hexRgdColor) {
+void DrawPixel(Canvas *canvas, int pixelNumber, std::string hexRgdColor) {
 	int red = std::stoul(hexRgdColor.substr(0, 2), nullptr, 16);
 	int green = std::stoul(hexRgdColor.substr(2, 2), nullptr, 16);
 	int blue = std::stoul(hexRgdColor.substr(4, 2), nullptr, 16);
@@ -142,10 +142,10 @@ int main(int argc, char *argv[]) {
 		printf("Received packet from %s:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
 		printf("Data: %s\n", buf);
 
-		std::vector<string> pixelcolors = CreateArray(buf);
+		std::vector<std::string> pixelcolors = CreateArray(buf);
 		
 		for (int i = 0; i < pixelcolors.size(); i++) {
-			string val = pixelcolors[i];
+			std::string val = pixelcolors[i];
 			DrawPixel(canvas, i, val);
 		}		
 
