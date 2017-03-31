@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Render
 {
@@ -16,7 +13,7 @@ namespace Render
         /// </summary>
         /// <param name="bitmap"></param>
         /// <returns></returns>
-        public string Serialize(Bitmap bitmap)
+        public static string Serialize(Bitmap bitmap)
         {
             var window = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
             var data = bitmap.LockBits(window, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);

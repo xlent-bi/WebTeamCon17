@@ -1,0 +1,13 @@
+{
+  "name": "xlent-node-js-console-app",
+  "version": "0.0.0",
+  "description": "xlentNodeJsConsoleApp",
+  "main": "app.js",
+  "author": {
+    "name": "PaulW"
+  },  
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io-client": "^1.7.3"
+  }
+}
