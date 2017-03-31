@@ -78,12 +78,11 @@ std::vector<std::string> CreateArray(const char* arr) {
 }
 
 void DrawPixel(Canvas *canvas, int pixelNumber, std::string hexRgdColor) {
-	char* p;
-	int red = (int)strtol(hexRgdColor.substr(0, 2).c_str(), &p, 16);
-	int green = (int)strtol(hexRgdColor.substr(2, 2).c_str(), &p, 16);
-	int blue = (int)strtol(hexRgdColor.substr(4, 2).c_str(), &p, 16);
-
-	DrawPixel(canvas, pixelNumber, red,green,blue);
+	
+	ushort red, green, blue;
+	if(3 == sscanf(hexRgdColor.c_str(), "%02x%02x%02x", &red, &green, &blue)) {
+		DrawPixel(canvas, pixelNumber, red, green, blue);
+	}
 }
 
 int main(int argc, char *argv[]) {
