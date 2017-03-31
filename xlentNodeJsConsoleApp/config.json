@@ -1,6 +1,8 @@
 ﻿{
   "azure": {
-    "url": "http://ledmatrixapi.azurewebsites.net/api/Connections?displayId=re&width=12&height=12"
+	"Uurl": "http://ledmatrixapi.azurewebsites.net/api/Connections/re/12/12",
+    "url": "http://localhost/LedDisplayApi/api/Connections/re/12/12",
+	"Xurl": "http://xlent-test-pw.azurewebsites.net"
   },
   "udpserver": {
     "url": "http://localhost:8081"
