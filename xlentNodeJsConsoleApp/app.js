@@ -2,6 +2,12 @@
 
 var config = require("app-settings")("config.json");
 
+var PORT = config.udpserver.port;
+var HOST = config.udpserver.url;
+
+var dgram = require('dgram');
+var client = dgram.createSocket('udp4');
+
 var http = require('http');
 
 /*
@@ -18,8 +24,13 @@ var connect = function() {
 
 	response.on('data', function (chunk) {
 			if (chunk) {
-				console.log(chunk + "");
-				// TODO: Send to UDP server
+                console.log(chunk + "");
+
+                // Send to UDP server
+                var message = new Buffer(chunk);
+                client.send(message, 0, message.length, PORT, HOST, function (err, bytes) {
+                    if (err) Console.log(err);
+                });
 			}
 		});
 

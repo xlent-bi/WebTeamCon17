@@ -4,8 +4,9 @@
     "url": "http://localhost/LedDisplayApi/api/Connections/re/12/12",
 	"Xurl": "http://xlent-test-pw.azurewebsites.net"
   },
-  "udpserver": {
-    "url": "http://localhost:8081"
+  "udpserver": {    
+    "url": "127.0.0.1",
+    "port": 8998
   }
 
 }
