@@ -1,0 +1,9 @@
+﻿{
+  "azure": {
+    "url": "http://ledmatrixapi.azurewebsites.net/api/Connections?displayId=re&width=12&height=12"
+  },
+  "udpserver": {
+    "url": "http://localhost:8081"
+  }
+
+}
