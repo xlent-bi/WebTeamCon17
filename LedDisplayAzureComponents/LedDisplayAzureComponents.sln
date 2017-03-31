@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{E3ABD4C1-E1C2-4EB2-ACC4-E4323C4AAC1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Render", "Graphics\Render.csproj", "{3DD0744E-D493-4D0C-867B-6E6CB2A88D4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{E3ABD4C1-E1C2-4EB2-ACC4-E4323C4AAC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3ABD4C1-E1C2-4EB2-ACC4-E4323C4AAC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3ABD4C1-E1C2-4EB2-ACC4-E4323C4AAC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DD0744E-D493-4D0C-867B-6E6CB2A88D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DD0744E-D493-4D0C-867B-6E6CB2A88D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DD0744E-D493-4D0C-867B-6E6CB2A88D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DD0744E-D493-4D0C-867B-6E6CB2A88D4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
