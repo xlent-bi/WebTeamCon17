@@ -136,6 +136,7 @@
     <None Include="matrixtest.py" />
     <None Include="matrixtest2.py" />
     <None Include="node-app\app.js" />
+    <None Include="node-app\test-app.js" />
     <None Include="README.md" />
     <None Include="runtext.ppm" />
     <None Include="runtext16.ppm" />
