@@ -10,16 +10,19 @@
 #include <unistd.h>
 #include <math.h>
 #include <stdio.h>
+#include <cstring>
+#include <string> 
 #include <string.h> //memset
 #include <stdlib.h> //exit(0);
 #include <arpa/inet.h>
 #include <sys/socket.h>
+#include <vector>
 
 using rgb_matrix::GPIO;
 using rgb_matrix::RGBMatrix;
 using rgb_matrix::Canvas;
 
-#define BUFLEN 512  //Max length of buffer
+#define BUFLEN 8192  //Max length of buffer
 #define PORT 8888   //The port on which to listen for incoming data
 
 static void DrawOnCanvas(Canvas *canvas) {
@@ -42,9 +45,9 @@ static void DrawOnCanvas(Canvas *canvas) {
   }
 }
 
-static void DrawPixel(Canvas *canvas, int pixel_nbr) {
+static void DrawPixel(Canvas *canvas, int pixel_nbr, int red, int blue, int green) {
 	canvas->SetPixel(pixel_nbr / 32, pixel_nbr % 32,
-		255, 0, 0);
+		red, blue, green);
 }
 
 static void Clear(Canvas *canvas) {
@@ -56,6 +59,31 @@ void die(char *s)
 {
 	perror(s);
 	exit(1);
+}
+
+std::vector<std::string> CreateArray(const char* arr) {
+
+	std::vector<std::string> result;
+	std::string input = std::string(arr);
+	int len = strlen(arr);
+	int position = 0;
+
+	while (position < len) {
+		std::string temp = input.substr(position, 6);
+		result.push_back(temp);
+		position += 7;
+	}
+
+	return result;
+}
+
+void DrawPixel(Canvas *canvas, int pixelNumber, std::string hexRgdColor) {
+	char* p;
+	int red = (int)strtol(hexRgdColor.substr(0, 2).c_str(), &p, 16);
+	int green = (int)strtol(hexRgdColor.substr(2, 2).c_str(), &p, 16);
+	int blue = (int)strtol(hexRgdColor.substr(4, 2).c_str(), &p, 16);
+
+	DrawPixel(canvas, pixelNumber, red,green,blue);
 }
 
 int main(int argc, char *argv[]) {
@@ -117,15 +145,12 @@ int main(int argc, char *argv[]) {
 		printf("Received packet from %s:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
 		printf("Data: %s\n", buf);
 
-		// Set pixel no
-		int pixel_nbr = atoi(buf);
-		if (pixel_nbr < 0) {
-			Clear(canvas);
-		}
-		else {
-			DrawPixel(canvas, pixel_nbr);
-		}
+		std::vector<std::string> pixelcolors = CreateArray(buf);
 		
+		for (int i = 0; i < pixelcolors.size(); i++) {
+			std::string val = pixelcolors[i];
+			DrawPixel(canvas, i, val);
+		}		
 
 		//now reply the client with the same data
 		if (sendto(s, buf, recv_len, 0, (struct sockaddr*) &si_other, slen) == -1)
