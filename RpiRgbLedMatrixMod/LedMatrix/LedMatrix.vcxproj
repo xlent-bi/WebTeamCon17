@@ -75,7 +75,7 @@
     <RemoteBuildCommandLine>make -C projects/LedMatrix</RemoteBuildCommandLine>
     <RemoteReBuildCommandLine>make -C projects/LedMatrix all</RemoteReBuildCommandLine>
     <RemoteCleanCommandLine>make -C projects/LedMatrix clean</RemoteCleanCommandLine>
-    <RemoteBuildOutputs>projects/LedMatrix/wg-udp-server</RemoteBuildOutputs>
+    <RemoteBuildOutputs>~/projects/LedMatrix/wg-udp-server</RemoteBuildOutputs>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <RemoteBuildCommandLine>make -C projects/LedMatrix</RemoteBuildCommandLine>
