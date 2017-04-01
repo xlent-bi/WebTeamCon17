@@ -12,9 +12,9 @@ namespace TestWebApp
         public static string BitmapToMatrix(Bitmap bitmap)
         {
             var builder = new StringBuilder();
-            for (var x = 0; x < bitmap.Width; x++)
+            for (var y = 0; y < bitmap.Height; y++)
             {
-                for (var y = 0; y < bitmap.Height; y++)
+                for (var x = 0; x < bitmap.Width; x++)
                 {
                     var pixel = bitmap.GetPixel(x, y);
                     builder.AppendFormat("{0:X2}{1:X2}{2:X2},", pixel.R, pixel.G, pixel.B);

@@ -1,5 +1,5 @@
 var PORT = 8888;
-var HOST = 'rpi-2';
+var HOST = 'rpi-3';
 
 var dgram = require('dgram');
 var client = dgram.createSocket('udp4');
