@@ -43,22 +43,27 @@ namespace TestWebApp.Controllers
             // Number of frames
             int frameCount = gifImg.GetFrameCount(dimension);
             // Return an Image at a certain index
+            var matrixData = "";
             for (var i = 0; i < frameCount; i++)
             {
                 gifImg.SelectActiveFrame(dimension, i);
                 var thumb = gifImg.GetThumbnailImage(32, 32, null, IntPtr.Zero);
                 var bitmap = new Bitmap(thumb);
-                var builder = new StringBuilder();
-                for (var x = 0; x < bitmap.Width; x++)
-                {
-                    for (var y = 0; y < bitmap.Height; y++)
-                    {
-                        var pixel = bitmap.GetPixel(x, y);
-                        builder.AppendFormat("{0}{1}{2}", pixel.R, pixel.G, pixel.B);
-                    }   
-                }
+
+                matrixData = MatrixHelper.BitmapToMatrix(bitmap);
+
+                queue.Enqueue(matrixData);
+                Thread.Sleep(500);
             }
 
+            return View("Index", matrixData as object);
+        }
+
+        public ActionResult Off()
+        {
+            var bitmap = new Bitmap(32, 32, PixelFormat.Format24bppRgb);
+            var matrixData = MatrixHelper.BitmapToMatrix(bitmap);
+            queue.Enqueue(matrixData);
             return View("Index");
         }
 
