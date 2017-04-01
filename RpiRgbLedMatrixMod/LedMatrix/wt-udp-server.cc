@@ -45,9 +45,23 @@ static void DrawOnCanvas(Canvas *canvas) {
   }
 }
 
-static void DrawPixel(Canvas *canvas, int pixel_nbr, int red, int blue, int green) {
-	canvas->SetPixel(pixel_nbr / 32, pixel_nbr % 32,
-		red, blue, green);
+static void DrawPixel(Canvas *canvas, int pixel_nbr, int red, int green, int blue) {
+	bool mirrorX = true;
+	bool mirrorY = false;
+
+	int w = canvas->width();
+	int x = pixel_nbr / w;
+	int y = pixel_nbr % w;
+
+	if(mirrorX) {
+		x = (w - 1) - x;
+	}
+
+	if(mirrorY) {
+		y = (canvas->height() - 1) - y;
+	}
+	
+	canvas->SetPixel(x, y, red, green, blue);
 }
 
 static void Clear(Canvas *canvas) {
@@ -77,10 +91,9 @@ std::vector<std::string> CreateArray(const char* arr) {
 	return result;
 }
 
-void DrawPixel(Canvas *canvas, int pixelNumber, std::string hexRgdColor) {
-	
+void DrawPixel(Canvas *canvas, int pixelNumber, std::string hexRgbColor) {
 	ushort red, green, blue;
-	if(3 == sscanf(hexRgdColor.c_str(), "%02x%02x%02x", &red, &green, &blue)) {
+	if(3 == sscanf(hexRgbColor.c_str(), "%02x%02x%02x", &red, &green, &blue)) {
 		DrawPixel(canvas, pixelNumber, red, green, blue);
 	}
 }
@@ -128,7 +141,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	//keep listening for data
-	while (1)
+	while (true)
 	{
 		printf("Waiting for data...");
 		fflush(stdout);
@@ -147,8 +160,7 @@ int main(int argc, char *argv[]) {
 		std::vector<std::string> pixelcolors = CreateArray(buf);
 		
 		for (int i = 0; i < pixelcolors.size(); i++) {
-			std::string val = pixelcolors[i];
-			DrawPixel(canvas, i, val);
+			DrawPixel(canvas, i, pixelcolors[i]);
 		}		
 
 		//now reply the client with the same data
@@ -166,5 +178,3 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-
-
